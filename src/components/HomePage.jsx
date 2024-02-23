@@ -5,7 +5,7 @@ export const Header = () => {
   return (
     <div className="relative h-screen">
       <img
-        src="https://images.pexels.com/photos/3747463/pexels-photo-3747463.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
+        src="https://images.unsplash.com/photo-1641840296052-1b41c4bce493?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         className="absolute inset-0 object-cover w-full h-full"
         alt=""
       />
@@ -15,7 +15,7 @@ export const Header = () => {
             <div className="w-full max-w-xl mb-2 sm:mb-2 xl:mb-0 xl:pr-16 xl:w-7/12">
               <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-white sm:text-6xl sm:leading-none">
                 Capti
-                <span className="text-teal-accent-400">GEN</span>
+                <span className="text-teal-accent-400 overline">GEN</span>
               </h2>
               <p className="max-w-xl mb-6 text-base text-gray-100 md:text-lg">
                 Captivate, connect, convert. Your video's secret weapon for
@@ -26,8 +26,8 @@ export const Header = () => {
                 **Currently on Beta
               </div>
             </div>
-            <div className="w-full max-w-xl xl:px-8 xl:w-5/12 backdrop-blur">
-              <div className="bg-gray-900 bg-opacity-25 rounded-3xl shadow-2xl p-7 sm:p-10 flex flex-col">
+            <div className="w-full max-w-xl xl:px-8 xl:w-5/12">
+              <div className="bg-gray-900 bg-opacity-25 rounded-3xl shadow-2xl p-7 sm:p-10 flex flex-col backdrop-blur border border-white">
                 <h2 className="mb-4 text-xl font-semibold text-white sm:text-center sm:mb-6 sm:text-xl">
                   Heyy Fellaa!! CaptiGen is currently free to use.
                 </h2>

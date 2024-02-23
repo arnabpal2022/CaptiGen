@@ -106,7 +106,7 @@ const SubGen = () => {
           <div>
             <label className="text-bold">End Time</label>
             <DateTime
-              className="border rounded p-2"
+              className="border rounded-xl p-2 block"
               value={endTime}
               onChange={handleEndTimeChange}
               dateFormat={false}
@@ -115,7 +115,7 @@ const SubGen = () => {
           </div>
           <label className="font-bold block"> Subtitles :</label>
           <textarea
-            className="border rounded p-2 w-full"
+            className="border rounded-xl p-2 w-full block"
             rows={4}
             cols={30}
             placeholder="Write Captions in the Timespan..."
