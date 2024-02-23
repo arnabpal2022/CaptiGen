@@ -1,15 +1,33 @@
-import './App.css'
-import SubGen from './components/subgen'
-import { Header } from './components/HomePage'
+import "./App.css";
+import SubGen from "./components/subgen";
+import { Header } from "./components/HomePage";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 function App() {
 
+  const router = createBrowserRouter([
+    {
+      path: "/generate",
+      element: (
+        <>
+          <SubGen/>
+        </>
+      )
+    },
+    {
+      path: "/",
+      element:(
+        <>
+          <Header/>
+        </>
+      )
+    }
+  ])
   return (
     <>
-      {/* <SubGen/> */}
-      <Header/>
+      <RouterProvider router = {router}/>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
