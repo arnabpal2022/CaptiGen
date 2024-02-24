@@ -1,5 +1,6 @@
 import text from "./../assets/inkpx-word-art (1).png";
-import "./../App.css"
+import "./../App.css";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
@@ -27,7 +28,7 @@ export const Header = () => {
               </div>
             </div>
             <div className="w-full max-w-xl xl:px-8 xl:w-5/12">
-              <div className="bg-gray-900 bg-opacity-25 rounded-3xl shadow-2xl p-7 sm:p-10 flex flex-col backdrop-blur border border-white">
+              <div className="bg-gray-900 bg-opacity-25 rounded-3xl shadow-2xl p-7 sm:p-10 backdrop-blur border border-white text-center">
                 <h2 className="mb-4 text-xl font-semibold text-white sm:text-center sm:mb-6 sm:text-xl">
                   Heyy Fellaa!! CaptiGen is currently free to use.
                 </h2>
@@ -35,18 +36,23 @@ export const Header = () => {
                   className="mb-4 text-xl font-semibold text-white sm:text-center sm:mb-6 sm:text-2xl"
                   src={text}
                 />
-                <button class="cssbuttons-io text-center border border-gray-100">
-                  <span>
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M0 0h24v24H0z" fill="none"></path>
-                      <path
-                        d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z"
-                        fill="currentColor"
-                      ></path>
-                    </svg>
-                    Start From Here...
-                  </span>
-                </button>
+                <Link to="/generate">
+                  <button class="cssbuttons-io text-center border border-gray-100 pl-10 pr-10">
+                    <span>
+                      <svg
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M0 0h24v24H0z" fill="none"></path>
+                        <path
+                          d="M24 12l-5.657 5.657-1.414-1.414L21.172 12l-4.243-4.243 1.414-1.414L24 12zM2.828 12l4.243 4.243-1.414 1.414L0 12l5.657-5.657L7.07 7.757 2.828 12zm6.96 9H7.66l6.552-18h2.128L9.788 21z"
+                          fill="currentColor"
+                        ></path>
+                      </svg>
+                      Start From Here...
+                    </span>
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
