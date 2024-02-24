@@ -3,6 +3,7 @@ import WebVTT from "node-webvtt";
 import DateTime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import moment from "moment";
+import Header from "./Header";
 
 import { TiDelete } from "react-icons/ti";
 import { MdOutlineEdit } from "react-icons/md";
@@ -137,6 +138,7 @@ const SubGen = () => {
 
   return (
     <>
+      <Header />
       <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         <div class="grid md:grid-cols-5 gap-10">
           <div class="md:col-span-2">
@@ -193,7 +195,7 @@ const SubGen = () => {
               <h2 className="font-bold text-xl mt-4">Subtitles :</h2>
               {subtitles.map((subtitle, index) => (
                 <div key={index} className="flex">
-                  <p className="font-bold w-80 max-w-3/4">
+                  <p className="font-bold max-w-3/4">
                     [{convertSecondsToTime(subtitle.startTime)} -{" "}
                     {convertSecondsToTime(subtitle.endTime)}] : {subtitle.text}
                   </p>
