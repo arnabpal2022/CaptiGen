@@ -14,6 +14,8 @@ const SubGen = () => {
   const [endTime, setEndTime] = useState("");
   const [subtitleText, setSubtitleText] = useState("");
 
+  const [fileName, setFileName] = useState("");
+
   const [changeButton, setChangeButton] = useState(true);
   const [editedItem, setEditedItem] = useState(null);
 
@@ -69,7 +71,7 @@ const SubGen = () => {
       valid: true,
     };
 
-    if (subtitles) {
+    if (subtitles && fileName!="") {
       subtitles.forEach((subtitle, index) => {
         const cue = {
           identifier: (index + 1).toString(),
@@ -88,10 +90,13 @@ const SubGen = () => {
       const downloadLink = URL.createObjectURL(modifiedSubtitleBlob);
       const a = document.createElement("a");
       a.href = downloadLink;
-      a.download = "Subtitle.vtt";
+      a.download = `${fileName}.vtt`;
       a.click();
     } else {
-      console.error("No subtitles available");
+      alert("Please enter file name");
+      if(!subtitles){
+        console.error("No subtitles available");
+      }
     }
   };
   const handleEdit = (id) => {
@@ -219,8 +224,15 @@ const SubGen = () => {
             </div>
             {subtitles.length > 0 && (
               <div>
+              <input
+                type="text"
+                placeholder="Enter file name..."
+                className="border rounded-xl p-2 w-64 block sm:inline sm:mr-2"
+                value={fileName}
+                onChange={(e) => setFileName(e.target.value)}
+              />
                 <button
-                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300 mt-4"
+                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300 mt-2"
                   onClick={handleGenerateSubtitleFile}
                 >
                   Download Subtitles File
