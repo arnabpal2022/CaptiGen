@@ -152,7 +152,7 @@ const SubGen = () => {
               <div>
                 <label className="text-bold">Start Time</label>
                 <DateTime
-                  className="border rounded p-2"
+                  className="border rounded-xl p-2"
                   value={startTime}
                   onChange={handleStartTimeChange}
                   dateFormat={false}
@@ -172,7 +172,7 @@ const SubGen = () => {
               <label className="font-bold block"> Subtitles :</label>
               <textarea
                 className="border rounded-xl p-2 w-full block"
-                rows={4}
+                rows={9}
                 cols={30}
                 placeholder="Write Captions in the Timespan..."
                 value={subtitleText}
@@ -180,14 +180,14 @@ const SubGen = () => {
               />
               {changeButton ? (
                 <button
-                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4 transition duration-300"
+                  className="bg-teal-400 text-white px-4 py-2 rounded hover:bg-teal-600 mt-4 transition duration-300"
                   onClick={handleAddSubtitle}
                 >
                   Add Subtitle
                 </button>
               ) : (
                 <button
-                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4 transition duration-300"
+                  className="bg-teal-400 text-white px-4 py-2 rounded hover:bg-teal-600 mt-4 transition duration-300"
                   onClick={handleEditedItem}
                 >
                   Submit changes
@@ -198,26 +198,31 @@ const SubGen = () => {
           <div class="md:col-span-3">
             <div>
               <h2 className="font-bold text-xl mt-4">Subtitles :</h2>
-              <div className = "border p-3 h-40 overflow-hidden">
+              <div className="border h-40 sm:h-96 overflow-scroll overflow-x-hidden bg-teal-50">
                 {subtitles.map((subtitle, index) => (
-                  <div key={index} className="flex">
-                    <p className="font-bold max-w-3/4">
+                  <div
+                    key={index}
+                    className="flex border p-3 items-center justify-between"
+                  >
+                    <p className="font-bold max-w-3/4 ">
                       [{convertSecondsToTime(subtitle.startTime)} -{" "}
-                      {convertSecondsToTime(subtitle.endTime)}] :{" "}
-                      {subtitle.text}
+                      {convertSecondsToTime(subtitle.endTime)}] :
+                      <div>{subtitle.text}</div>
                     </p>
-                    <button
-                      className="ml-6 text-2xl"
-                      onClick={() => handleEdit(index)}
-                    >
-                      <MdOutlineEdit />
-                    </button>
-                    <button
-                      className="text-2xl"
-                      onClick={() => handleDelete(index)}
-                    >
-                      <TiDelete />
-                    </button>
+                    <span className = "flex flex-row">
+                      <button
+                        className="text-2xl"
+                        onClick={() => handleEdit(index)}
+                      >
+                        <MdOutlineEdit />
+                      </button>
+                      <button
+                        className="text-2xl"
+                        onClick={() => handleDelete(index)}
+                      >
+                        <TiDelete />
+                      </button>
+                    </span>
                   </div>
                 ))}
               </div>
@@ -232,7 +237,7 @@ const SubGen = () => {
                 onChange={(e) => setFileName(e.target.value)}
               />
                 <button
-                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300 mt-2"
+                  className="bg-teal-400 text-white px-4 py-2 rounded hover:bg-teal-600 transition duration-300 mt-2"
                   onClick={handleGenerateSubtitleFile}
                 >
                   Download Subtitles File
