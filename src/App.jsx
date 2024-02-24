@@ -2,6 +2,7 @@ import "./App.css";
 import SubGen from "./components/subgen";
 import { Header } from "./components/HomePage";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import GeneratorTool from "./components/GeneratorTool";
 
 function App() {
 
@@ -19,6 +20,14 @@ function App() {
       element:(
         <>
           <Header/>
+        </>
+      )
+    },
+    {
+      path: "/tool",
+      element:(
+        <>
+          <GeneratorTool/>
         </>
       )
     }
