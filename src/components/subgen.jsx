@@ -4,11 +4,16 @@ import DateTime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import moment from "moment";
 import { parse } from "postcss";
+import { TiDelete } from "react-icons/ti";
+import { MdOutlineEdit } from "react-icons/md";
 const SubGen = () => {
   const [subtitles, setSubtitles] = useState([]);
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [subtitleText, setSubtitleText] = useState("");
+
+  const [changeButton, setChangeButton] = useState(true);
+  const [editedItem, setEditedItem] = useState(null);
 
   const handleStartTimeChange = (selectedTime) => {
     const formattedTime = moment(selectedTime).format("HH:mm:ss");
@@ -87,6 +92,43 @@ const SubGen = () => {
       console.error("No subtitles available");
     }
   };
+  const handleEdit = (id) => {
+    let editItem = subtitles.find((item, index) => {
+      if (index === id) {
+        return item;
+      }
+    })
+    let startTime = convertSecondsToTime(editItem.startTime);
+    let endTime = convertSecondsToTime(editItem.endTime)
+    
+    setSubtitleText(editItem.text);
+    setStartTime(startTime);
+    setEndTime(endTime);
+    
+    setChangeButton(false);
+    setEditedItem(id);
+
+  }
+  const handleEditedItem = () => {
+    setSubtitles(
+      subtitles.map((subtitle, index) => {
+        if(index === editedItem){
+          return {...subtitle, startTime:convertToSeconds(startTime), endTime:convertToSeconds(endTime),  text: subtitleText};
+        }
+        return subtitle;
+      })
+    )
+    
+    setChangeButton(true);
+    setSubtitleText("")
+  }
+  const handleDelete = (id) => {
+    setSubtitles((items) => {
+      return items.filter((arr, index) => {
+        return index != id;
+      })
+    })
+  }
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -122,21 +164,41 @@ const SubGen = () => {
             value={subtitleText}
             onChange={handleSubtitleTextChange}
           />
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4 transition duration-300"
-            onClick={handleAddSubtitle}
-          >
-            Add Subtitle
-          </button>
+          {
+            changeButton ?
+              <button
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4 transition duration-300"
+                onClick={handleAddSubtitle}
+              >
+                Add Subtitle
+              </button> :
+              <button
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4 transition duration-300"
+                onClick={handleEditedItem}
+              >
+                Submit changes
+              </button>
+          }
         </div>
         <div>
           <h2 className="font-bold text-xl mt-4">Subtitles :</h2>
           {subtitles.map((subtitle, index) => (
-            <div key={index} className="">
-              <p className="font-bold">
+            <div key={index} className="flex">
+              <p className="font-bold w-80 max-w-3/4">
                 [{convertSecondsToTime(subtitle.startTime)} -{" "}
                 {convertSecondsToTime(subtitle.endTime)}] : {subtitle.text}
               </p>
+              <button
+                className="ml-6 text-2xl"
+                onClick={() => handleEdit(index)}
+              >
+                <MdOutlineEdit />
+              </button>
+              <button
+                className="text-2xl"
+                onClick={() => handleDelete(index)}
+              ><TiDelete />
+              </button>
             </div>
           ))}
         </div>
