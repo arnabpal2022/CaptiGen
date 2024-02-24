@@ -193,26 +193,29 @@ const SubGen = () => {
           <div class="md:col-span-3">
             <div>
               <h2 className="font-bold text-xl mt-4">Subtitles :</h2>
-              {subtitles.map((subtitle, index) => (
-                <div key={index} className="flex">
-                  <p className="font-bold max-w-3/4">
-                    [{convertSecondsToTime(subtitle.startTime)} -{" "}
-                    {convertSecondsToTime(subtitle.endTime)}] : {subtitle.text}
-                  </p>
-                  <button
-                    className="ml-6 text-2xl"
-                    onClick={() => handleEdit(index)}
-                  >
-                    <MdOutlineEdit />
-                  </button>
-                  <button
-                    className="text-2xl"
-                    onClick={() => handleDelete(index)}
-                  >
-                    <TiDelete />
-                  </button>
-                </div>
-              ))}
+              <div className = "border p-3 h-40 overflow-hidden">
+                {subtitles.map((subtitle, index) => (
+                  <div key={index} className="flex">
+                    <p className="font-bold max-w-3/4">
+                      [{convertSecondsToTime(subtitle.startTime)} -{" "}
+                      {convertSecondsToTime(subtitle.endTime)}] :{" "}
+                      {subtitle.text}
+                    </p>
+                    <button
+                      className="ml-6 text-2xl"
+                      onClick={() => handleEdit(index)}
+                    >
+                      <MdOutlineEdit />
+                    </button>
+                    <button
+                      className="text-2xl"
+                      onClick={() => handleDelete(index)}
+                    >
+                      <TiDelete />
+                    </button>
+                  </div>
+                ))}
+              </div>
             </div>
             {subtitles.length > 0 && (
               <div>
